@@ -22,18 +22,10 @@ export default class GameScene extends Phaser.Scene{
 
         this.input.mouse.disableContextMenu();
 
-        this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
-            if(deltaY < 0){
-
-            }
-            else if(deltaY > 0){
-
-            }
-        });
+        this.setupTouchEvents();
     }
 
     update(time, delta){
-        this.checkMouseButtons();
     }
 
     createBackground(){
@@ -78,21 +70,21 @@ export default class GameScene extends Phaser.Scene{
         }
     }
 
-    checkMouseButtons(){
-        const pointer = this.input.activePointer;
+    setupTouchEvents(){
+        this.input.on('pointerdown', (pointer) => {
+            
+        })
 
-        if (pointer.leftButtonDown()){
+        this.player.setPosition(pointer.x, pointer.y);
 
-            this.player.x = pointer.x;
-            this.player.y = pointer.y;
-        }
+        this.input.on('pointerup', (pointer) => {
+            
+        })
 
-        if (pointer.rightButtonDown()){
+        this.input.on('pointermove', (pointer) => {
+            if(pointer.isDown){
 
-        }
-
-        if (pointer.middleButtonDown()){
-
-        }
+            }
+        })
     }
 }

@@ -8,8 +8,8 @@ export default class PreloadScene extends Phaser.Scene {
     preload(){
         this.displayProgressBar();
 
-        this.load.image('background', 'assets/images/background.png');
-        this.load.image('player', 'assets/images/avelino.png');
+        this.load.image('cenario', 'assets/imagens/background.png');
+        this.load.image('player', 'assets/imagens/garota.png');
     }
 
     create(){
@@ -25,7 +25,7 @@ export default class PreloadScene extends Phaser.Scene {
 
         const progressBar = this.add.graphics();
         const loadingText = this.add.text(
-            width /2,
+            widht /2,
             height /2 -30,
             'Loading...',
             {
@@ -37,7 +37,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.on('progress', (value) => {
             progressBar.clear();
             progressBar.fillStyle(0xffffff, 1);
-            progressBar.fillRect(width / 4, height / 2 -10, (width /2) * value, 20);
+            progressBar.fillRect(widht / 4, height / 2 -10, (widht /2) * value, 20);
         });
 
 

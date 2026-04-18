@@ -8,10 +8,7 @@ export default class GameScene extends Phaser.Scene{
     }
 
     init(){
-        this.cursors = null;
-        this.spaceKey = null;
         this.player = null;
-        this.playerSpeed = 80;
     }
 
     create(){
@@ -22,10 +19,21 @@ export default class GameScene extends Phaser.Scene{
         this.cursors = this.input.keyboard.createCursorKeys();
 
         this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        this.input.mouse.disableContextMenu();
+
+        this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY, deltaZ) => {
+            if(deltaY < 0){
+
+            }
+            else if(deltaY > 0){
+
+            }
+        });
     }
 
     update(time, delta){
-        this.movePlayerManager();
+        this.checkMouseButtons();
     }
 
     createBackground(){
@@ -40,9 +48,6 @@ export default class GameScene extends Phaser.Scene{
 
     createPlayer(){
         this.player = this.physics.add.sprite(this.config.width * 0.5, 300, "player");
-
-        //this.player = this.physics.add.sprite(this.config.width * 0.5, 300, "player");
-        //this.player.setCollideWorldBounds(true);
     }
 
     movePlayerManager(){
@@ -70,6 +75,24 @@ export default class GameScene extends Phaser.Scene{
 
         if (Phaser.Input.Keyboard.JustDown(this.spaceKey)){
             console.log('barra de espaco pressionad!');
+        }
+    }
+
+    checkMouseButtons(){
+        const pointer = this.input.activePointer;
+
+        if (pointer.leftButtonDown()){
+
+            this.player.x = pointer.x;
+            this.player.y = pointer.y;
+        }
+
+        if (pointer.rightButtonDown()){
+
+        }
+
+        if (pointer.middleButtonDown()){
+
         }
     }
 }

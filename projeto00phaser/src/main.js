@@ -28,10 +28,10 @@ const config = {
     backgroundColor: '#0080ff',
     parent: 'game-container',
     pixelArt: false,
-    physics: {
+    Physics: {
         default: 'arcade',
         arcade: {
-            gravity: {y: 0},
+            gravity: {y: 300},
             debug: SHARED_CONFIG['debug'],
         }
     },

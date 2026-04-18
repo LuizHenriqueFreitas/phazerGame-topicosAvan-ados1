@@ -1,4 +1,4 @@
-import Phaser, { Scene, Physics, Scale } from "phaser"
+import Phaser from 'phaser'
 
 import PreloadScene from "./scenes/PreloadScene"
 import GameScene from "./scenes/GameScene"
@@ -10,7 +10,7 @@ const HEIGHT = 700;
 const SHARED_CONFIG = {
     width: WIDTH,
     height: HEIGHT,
-    debug: false
+    debug: true
 }
 
 const SCENES = [
