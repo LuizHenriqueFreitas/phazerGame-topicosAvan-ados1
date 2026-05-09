@@ -11,14 +11,12 @@ export default class PreloadScene extends Phaser.Scene {
         this.displayProgressBar();
 
         this.load.image('background', 'assets/images/background.png');
-        this.load.image('fence', 'assets/images/cerca.png');
-        this.load.image('player', 'assets/images/mineiro.png');
 
-        this.load.image('cheese1', 'assets/images/queijo1.png');
-        this.load.image('cheese2', 'assets/images/queijo2.png');
-        this.load.image('cheese3', 'assets/images/queijo3.png');
-        this.load.image('cheese4', 'assets/images/queijo4.png');
-        this.load.image('cheese5', 'assets/images/queijo5.png');
+        this.load.image('enemy_idle_1', 'assets/images/enemy/idle_1.png');
+        this.load.image('enemy_idle_2', 'assets/images/enemy/idle_2.png');
+        this.load.image('enemy_idle_3', 'assets/images/enemy/idle_3.png');
+        this.load.image('enemy_idle_4', 'assets/images/enemy/idle_4.png');
+        this.load.image('enemy_idle_5', 'assets/images/enemy/idle_5.png');
     }
 
     init() {
@@ -116,7 +114,34 @@ export default class PreloadScene extends Phaser.Scene {
             150,
             this.config.height - 40,
         );
+
+        //
+        const offsetX = (this.cheese.width - newWidht) / 2;
+        const offsetY = (this.cheese.height - newHeight) / 2;
+
+        this.physics.add.overlap(
+            this.player,
+            this.cheese,
+            this.collectCheese,
+            null,
+            this
+        );
+
+        this.time.delayedCall(
+            3000,
+            this.createCheese,
+            [],
+            this
+        );
     }
+
+    collectCheese(player, cheeseToColletc){
+        this.cheeseCollected++;
+        this.scoreText.setText('QUEIJOS: ' + this.cheeseCollected);
+        cheeseToColletc.disableBody(true, true);
+    }
+
+
 
     displayProgressBar() {
         const {width, height} = this.cameras.main;

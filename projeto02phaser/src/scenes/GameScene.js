@@ -94,5 +94,9 @@ export default class GameScene extends Phaser.Scene{
         if (pointer.middleButtonDown()){
 
         }
+
+        if(pointer.isDown && pointer.getDuration() > 500){
+            
+        }
     }
 }

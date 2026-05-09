@@ -11,14 +11,25 @@ export default class PreloadScene extends Phaser.Scene {
         this.displayProgressBar();
 
         this.load.image('background', 'assets/images/background.png');
-        this.load.image('fence', 'assets/images/cerca.png');
-        this.load.image('player', 'assets/images/mineiro.png');
+        this.load.image('columns', 'assets/images/columns.png');
+        
+        this.load.spritesheet(
+            'player',
+            'assets/images/enemy/player_spritesheet.png',
+            {
+                frameWidth: 32,
+                frameHeight: 32
+            }
+        )
 
-        this.load.image('cheese1', 'assets/images/queijo1.png');
-        this.load.image('cheese2', 'assets/images/queijo2.png');
-        this.load.image('cheese3', 'assets/images/queijo3.png');
-        this.load.image('cheese4', 'assets/images/queijo4.png');
-        this.load.image('cheese5', 'assets/images/queijo5.png');
+        this.load.spritesheet(
+            'enemy',
+            'assets/images/enemy/enemy_spritesheet.png',
+            {
+                frameWidth: 288,
+                frameHeight: 160
+            }
+        )
     }
 
     init() {
